@@ -15,6 +15,31 @@ body {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
+.container {
+  display: flex;
+  height: calc(100vh - 50px);
+}
+
+.left-panel {
+  flex: 2;
+  padding: 40px;
+  border-right: 1px solid #ccc;
+  background-color: #ffffff;
+}
+
+.right-panel {
+  flex: 1;
+  padding: 30px;
+  background-color: #f0f0f0;
+}
+
+.input-barcode {
+  width: 100%;
+  padding: 15px;
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
 h1 {
     text-align: center;
     color: #333;
