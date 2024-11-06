@@ -1,3 +1,31 @@
 .container-div{
    padding-top: 1%;
+   height: 70%;
+  
+
+}
+* {
+   box-sizing: border-box;
+}
+.header{
+   height: 10%;
+}
+footer {
+   position: fixed;
+   bottom: 0;
+   width: 100%;
+   background-color: rgba(0, 0, 51, 0.8); /* Azul oscuro con transparencia */
+   color: white;
+   text-align: center;
+   padding: 10px 0;
+   box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.3);
+   
+}
+
+.footer-bar p {
+   margin: 0;
+}
+
+.header{
+   height: 20%;
 }
