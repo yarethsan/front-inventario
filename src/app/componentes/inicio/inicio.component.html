@@ -1,24 +1,29 @@
-<div class="inventory-container">
-    <h1>Gestión de Inventario</h1>
-    <div class="product-form">
-        <input type="text" id="barcode" placeholder="Código de Barras">
-        <input type="text" id="product-name" placeholder="Nombre del Producto">
-        <input type="number" id="price" placeholder="Precio" step="0.01">
-        <input type="number" id="quantity" placeholder="Cantidad" min="1">
-        <button id="add-product-btn">Agregar Producto</button>
-    </div>
-    <table class="inventory-list">
-        <thead>
-            <tr>
-                <th>Código de Barras</th>
-                <th>Nombre</th>
-                <th>Precio</th>
-                <th>Cantidad</th>
-                <th>Acciones</th>
-            </tr>
-        </thead>
-        <tbody id="inventory-body">
-            <!-- Los productos se agregarán aquí dinámicamente -->
-        </tbody>
-    </table>
-  </div>
+<div class="body">
+    
+<div class="wrapper">
+    <a (click)="pagina('ventas')" class="card card1">
+        <i class="fa-solid fa-cart-shopping"></i>
+        <h2>Ventas</h2>
+        <p>Realiza una nueva venta</p>
+    </a>
+
+    <a href="codigos.html" class="card card2">
+        <i class="fa-solid fa-barcode"></i>
+        <h2>Codigo de barras</h2>
+        <p>Genera un codigo de barras</p>
+    </a>
+   
+    <a href="usuarios.html" class="card card3">
+        <i class="fa-solid fa-universal-access"></i>
+        <h2>Usuarios</h2>
+        <p>Ingresa a la lista de usuarios</p>
+    </a>
+
+    <a href="inventario.html" class="card card4">
+        <i class="fa-solid fa-clipboard"></i>
+        <h2>Inventario</h2>
+        <p>Ingresa al inventario</p>
+    </a>
+
+</div>
+</div>
