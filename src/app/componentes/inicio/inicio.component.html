@@ -1,0 +1,24 @@
+<div class="inventory-container">
+    <h1>Gestión de Inventario</h1>
+    <div class="product-form">
+        <input type="text" id="barcode" placeholder="Código de Barras">
+        <input type="text" id="product-name" placeholder="Nombre del Producto">
+        <input type="number" id="price" placeholder="Precio" step="0.01">
+        <input type="number" id="quantity" placeholder="Cantidad" min="1">
+        <button id="add-product-btn">Agregar Producto</button>
+    </div>
+    <table class="inventory-list">
+        <thead>
+            <tr>
+                <th>Código de Barras</th>
+                <th>Nombre</th>
+                <th>Precio</th>
+                <th>Cantidad</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody id="inventory-body">
+            <!-- Los productos se agregarán aquí dinámicamente -->
+        </tbody>
+    </table>
+  </div>
