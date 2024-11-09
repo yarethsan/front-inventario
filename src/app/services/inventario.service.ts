@@ -19,9 +19,9 @@ export class InventarioService {
     return this.http.post(`${this.URL}/nuevo`,inventario); 
   }
   actualizarInventario(inventario:any, id:number):Observable<any>{
-    return this.http.put(`${this.URL}/editar/${inventario}`, inventario);
+    return this.http.put(`${this.URL}/edita/${id}`, inventario);
   }           
-  eliminarInventario(inventario:any, id:number):Observable<any>{
+  eliminarInventario(inventario:any):Observable<any>{
     return this.http.delete(`${this.URL}/${inventario}`)
   }
 }
