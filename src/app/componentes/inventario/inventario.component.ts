@@ -15,6 +15,8 @@ import { error } from 'console';
 })
 export class InventarioComponent {
 
+editado:boolean=false
+idProducto!: number ;
   inventario: any;
   form: FormGroup = new FormGroup({
     codigoBarras: new FormControl(''),
@@ -25,13 +27,16 @@ export class InventarioComponent {
   constructor(private router: Router, private _inventario: InventarioService) { }
 
   ngOnInit(): void {
-this.obtenerProductos()
+    this.obtenerProductos()
   }
 
-  obtenerProductos(){
+  obtenerProductos() {
     this._inventario.obtenerInventario().subscribe({
-      next: inventario => this.inventario = inventario,
-      error: error => console.error('Error:', error),
+      next: inventario => {
+        this.inventario = inventario
+        
+      },
+      error: error => {this.inventario=null},
     })
   }
 
@@ -47,12 +52,51 @@ this.obtenerProductos()
       precio: this.form.get('precio')?.value,
       cantidadDisponible: this.form.get('cantidad')?.value
     }
-    this._inventario.nuevoProducto(producto).subscribe({
-      next: respuesta => console.log(respuesta),
-      error: error=> console.error(error),
-      complete: ()=> this.obtenerProductos()
+    if ( !this.editado) {
+      this._inventario.nuevoProducto(producto).subscribe({
+        next: respuesta => console.log(respuesta),
+        error: error => console.error(error),
+        complete: () => this.obtenerProductos()
+      })
+    } else {
+      console.log("editado", this.form.value)
+      this._inventario.actualizarInventario(producto, this.idProducto).subscribe({
+        next: respuesta => console.log(respuesta),
+        error: error => console.error(error),
+        complete: () => {this.obtenerProductos();
+          this.editado = false
+        }
+      })
+      this.form.setValue({
+        codigoBarras: null,
+        nombreProducto : null,
+        precio: null,
+        cantidad: null
+      })
+      
+      
+    }
+    
+  }
+
+  editarProducto(producto: any) {
+    this.editado = true 
+    this.idProducto = producto.idProducto
+    console.log(producto )
+    this.form.setValue({
+      codigoBarras: null,
+      nombreProducto : producto.nombreProducto,
+      precio: producto.precio,
+      cantidad: producto.cantidadDisponible
     })
-    console.log(this.form.value)
+  }
+  eliminarProducto (idProducto: number) {
+    this._inventario.eliminarInventario(idProducto).subscribe({
+      next: respuesta => console.log(respuesta),
+      error: error => console.error(error),
+      complete: () => this.obtenerProductos()
+    })
+    console.log (idProducto)
   }
 
 }
