@@ -15,7 +15,7 @@ export class InventarioService {
     return this.http.get(`${this.URL}/`);
   }
 
-  nuevoProducto(inventario:any, id:number):Observable<any>{
+  nuevoProducto(inventario:any):Observable<any>{
     return this.http.post(`${this.URL}/nuevo`,inventario); 
   }
   actualizarInventario(inventario:any, id:number):Observable<any>{
