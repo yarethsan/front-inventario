@@ -7,7 +7,11 @@
                 <input type="text" id="product-name" formControlName="nombreProducto" placeholder="Nombre del Producto">
                 <input type="number" id="price" formControlName="precio" placeholder="Precio" step="0.01">
                 <input type="number" id="quantity" formControlName="cantidad" placeholder="Cantidad" min="1">
-                <button type="submit">Agregar Producto</button>
+                @if (!editado) {
+                    <button type="submit">Agregar Producto</button>
+                } @else {
+                    <button type="submit">Editar Producto</button>
+                }
             </div>
         </form>
 
@@ -27,10 +31,12 @@
                     <td>{{item.nombreProducto}}</td>
                     <td>{{item.precio}}</td>
                     <td>{{item.cantidadDisponible}}</td>
-                    <td><button class="buttonax">editar</button>
-                        <button class="buttonax">eliminar</button>
+                    <td><button class="buttonax" (click)="editarProducto(item)">editar</button>
+                        <button class="buttonax" (click)="eliminarProducto(item.idProducto)">eliminar</button>
                     </td>
                 </tr>
+                } @if (inventario == null) {
+                    <h3>NO HAY DATOS</h3>
                 }
             </thead>
             <tbody id="inventory-body">
