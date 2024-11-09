@@ -71,6 +71,9 @@ button, .ov-btn-grow-ellipse {
     cursor: pointer;
     width: 100%; /* Ajuste para hacer los botones más largos */
 }
+.buttonax{
+  width: 40%;
+}
 
 @keyframes jello-horizontal {
     0% { transform: scale3d(1, 1, 1); }

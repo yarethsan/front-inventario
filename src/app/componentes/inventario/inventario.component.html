@@ -10,6 +10,7 @@
     </div>
     <table class="inventory-list">
         <thead>
+
             <tr>
                 <th>Código de Barras</th>
                 <th>Nombre</th>
@@ -17,6 +18,16 @@
                 <th>Cantidad</th>
                 <th>Acciones</th>
             </tr>
+            @for (item of inventario; track $index) {
+                <tr>
+                    <td></td>
+                    <td>{{item.nombreProducto}}</td>
+                    <td>{{item.precio}}</td>
+                    <td>{{item.cantidadDisponible}}</td>
+                    <td><button class="buttonax">editar</button>
+                        <button class="buttonax">eliminar</button></td>
+                </tr>
+            }
         </thead>
         <tbody id="inventory-body">
             <!-- Los productos se agregarán aquí dinámicamente -->
