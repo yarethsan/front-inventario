@@ -1,37 +1,41 @@
 <div>
-<div class="inventory-container">
-    <h1>Gestión de Inventario</h1>
-    <div class="product-form">
-        <input type="text" id="barcode" placeholder="Código de Barras">
-        <input type="text" id="product-name" placeholder="Nombre del Producto">
-        <input type="number" id="price" placeholder="Precio" step="0.01">
-        <input type="number" id="quantity" placeholder="Cantidad" min="1">
-        <button id="add-product-btn">Agregar Producto</button>
-    </div>
-    <table class="inventory-list">
-        <thead>
+    <div class="inventory-container">
+        <h1>Gestión de Inventario</h1>
+        <form [formGroup]="form" (ngSubmit)="agregarProducto()">
+            <div class="product-form">
+                <input type="text" id="barcode" formControlName="codigoBarras" placeholder="Código de Barras">
+                <input type="text" id="product-name" formControlName="nombreProducto" placeholder="Nombre del Producto">
+                <input type="number" id="price" formControlName="precio" placeholder="Precio" step="0.01">
+                <input type="number" id="quantity" formControlName="cantidad" placeholder="Cantidad" min="1">
+                <button type="submit">Agregar Producto</button>
+            </div>
+        </form>
 
-            <tr>
-                <th>Código de Barras</th>
-                <th>Nombre</th>
-                <th>Precio</th>
-                <th>Cantidad</th>
-                <th>Acciones</th>
-            </tr>
-            @for (item of inventario; track $index) {
+        <table class="inventory-list">
+            <thead>
+
+                <tr>
+                    <th>Código de Barras</th>
+                    <th>Nombre</th>
+                    <th>Precio</th>
+                    <th>Cantidad</th>
+                    <th>Acciones</th>
+                </tr>
+                @for (item of inventario; track $index) {
                 <tr>
                     <td></td>
                     <td>{{item.nombreProducto}}</td>
                     <td>{{item.precio}}</td>
                     <td>{{item.cantidadDisponible}}</td>
                     <td><button class="buttonax">editar</button>
-                        <button class="buttonax">eliminar</button></td>
+                        <button class="buttonax">eliminar</button>
+                    </td>
                 </tr>
-            }
-        </thead>
-        <tbody id="inventory-body">
-            <!-- Los productos se agregarán aquí dinámicamente -->
-        </tbody>
-    </table>
-</div>
+                }
+            </thead>
+            <tbody id="inventory-body">
+                <!-- Los productos se agregarán aquí dinámicamente -->
+            </tbody>
+        </table>
+    </div>
 </div>
