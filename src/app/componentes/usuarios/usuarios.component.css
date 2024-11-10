@@ -1,0 +1,24 @@
+
+.inventory-list {
+    width: 100%;
+    border-collapse: collapse;
+}
+.usuario-container {
+    max-width: 800px;
+    margin-top: 80px;
+    margin-left: 200px;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+.inventory-list th,
+.inventory-list td {
+    padding: 12px;
+    border: 1px solid #ccc;
+    text-align: left;
+}
+
+.inventory-list th {
+    background-color: #eee;
+}
