@@ -134,32 +134,6 @@ button, .ov-btn-grow-ellipse {
 }
 
 
-
-.inventory-list {
-    width: 100%;
-    border-collapse: collapse;
-}
-
-.inventory-list th,
-.inventory-list td {
-    padding: 12px;
-    border: 1px solid #ccc;
-    text-align: left;
-}
-
-.inventory-list th {
-    background-color: #eee;
-}
-
-.action-btn {
-    padding: 6px 12px;
-    background-color: #e74c3c;
-    color: #fff;
-    border: none;
-    cursor: pointer;
-    border-radius: 4px;
-}
-
 .action-btn:hover {
     background-color: #c0392b;
 }
