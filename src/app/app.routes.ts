@@ -4,7 +4,7 @@ import { InicioComponent } from './componentes/inicio/inicio.component';
 import { VentasComponent } from './componentes/ventas/ventas.component';
 import { InventarioComponent } from './componentes/inventario/inventario.component';
 import { Component } from '@angular/core';
-import { UsuariosComponent } from './componentes/usuarios/usuarios.component';
+import { UsuarioComponent } from './componentes/usuarios/usuarios.component';
 
 export const routes: Routes = [
   { path: "" , component: DashboardComponent,
@@ -13,7 +13,7 @@ export const routes: Routes = [
       {path: "menu", component: InicioComponent},
       {path: "ventas", component: VentasComponent},
       {path: "inventario", component: InventarioComponent},
-      {path: "usuarios", component: UsuariosComponent}
+      {path: "usuarios", component: UsuarioComponent}
     ]
 
   }
