@@ -46,7 +46,7 @@ idProducto!: number ;
   agregarProducto() {
     const producto = {
       idProducto: null,
-      codigo: 'ID-' + Date.now(),
+      codigo: Date.now(),
       nombreProducto: this.form.get('nombreProducto')?.value,
       precio: this.form.get('precio')?.value,
       cantidadDisponible: this.form.get('cantidad')?.value
