@@ -10,7 +10,7 @@ export class VentasService {
   private URL = `${enviroment.url}/ventas`;
   constructor(private http: HttpClient) { }
   agregarVenta(venta: any): Observable<any> {
-    return this.http.post<any>(this.URL, venta);
+    return this.http.post<any>(`${this.URL}/nueva`, venta);
   }
 
 }
