@@ -4,6 +4,7 @@ import { enviroment } from '../../enviroments/enviroment';
 import { Observable } from 'rxjs';
 
 
+
 @Injectable({
   providedIn: 'root'
 })
@@ -25,6 +26,9 @@ export class UsuariosService {
 
   actualizarUsuario(usuario: any, id: number): Observable<any> {
     return this.http.put(`${this.URL}/edita/${id}`, usuario);
+  }
+  activarDesactivarU(idUsuario: number, estado: boolean): Observable<any>{
+    return this.http.put(`${this.URL}/${idUsuario}/estado`,{activo: estado});
   }
 
   eliminarUsuario(id: number): Observable<any> {
