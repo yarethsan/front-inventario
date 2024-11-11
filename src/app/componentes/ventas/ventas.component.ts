@@ -15,6 +15,8 @@ export class VentasComponent {
 
   searchQuery: string = '';
   subtotal = 0;
+  impuestos = 0;
+  total = 0;
   productosEncontrados: any[] = [];  // Lista para almacenar los productos encontrados
   productosSeleccionados: any[] = [];
   private searchSubject: Subject<string> = new Subject();  // Subject para manejar las búsquedas
@@ -70,15 +72,21 @@ export class VentasComponent {
       this.productosSeleccionados.push(producto);
     }
     this.subtotal +=  producto.precio;
+    this.impuestos = this.subtotal * 0.1;
+    this.total = this.subtotal + this.impuestos;
   }
 
   eliminarProductoLista(index:number, producto:any){
     if(producto.cantidad > 1){
       producto.cantidad--;
       this.subtotal -=  producto.precio
+      this.impuestos = this.subtotal * 0.1;
+      this.total = this.subtotal + this.impuestos;
     }else{
       this.subtotal -=  producto.precio
+      this.impuestos = this.subtotal * 0.1;
       this.productosSeleccionados.splice(index, 1);
+      this.total = this.subtotal + this.impuestos;
     }
   }
 
