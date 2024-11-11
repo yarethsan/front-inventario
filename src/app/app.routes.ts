@@ -3,8 +3,9 @@ import { DashboardComponent } from './componentes/dashboard/dashboard.component'
 import { InicioComponent } from './componentes/inicio/inicio.component';
 import { VentasComponent } from './componentes/ventas/ventas.component';
 import { InventarioComponent } from './componentes/inventario/inventario.component';
+import { UsuarioComponent } from './usuarios/usuarios.component';
 import { Component } from '@angular/core';
-import { UsuarioComponent } from './componentes/usuarios/usuarios.component';
+
 
 
 export const routes: Routes = [
