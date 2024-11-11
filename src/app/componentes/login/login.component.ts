@@ -28,7 +28,7 @@ export class LoginComponent {
         if (respuesta.rol.idRol == 1) {
           sessionStorage.setItem('nombre', respuesta.nombre) 
           sessionStorage.setItem('rol', respuesta.rol.descripcion) 
-          this.routest.navigate(['dashboard']); 
+          this.routest.navigate(['']); 
         }
       },
       error: err => {

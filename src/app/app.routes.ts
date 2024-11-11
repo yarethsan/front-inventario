@@ -8,7 +8,7 @@ import { Component } from '@angular/core';
 import { LoginComponent } from './componentes/login/login.component';
 
 export const routes: Routes = [
-  { path: "dashboard" , component: DashboardComponent,
+  { path: "" , component: DashboardComponent,
     children:[
 
       {path: "", redirectTo: "menu", pathMatch:"full"},
