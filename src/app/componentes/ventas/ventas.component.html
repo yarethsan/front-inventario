@@ -1,7 +1,17 @@
 <div class="container">
     <div class="left-panel">
-        <input type="text" class="input-barcode" placeholder="Ingrese código de barras" />
-        <button class="ov-btn-grow-ellipse">Activar Lector de Código de Barras</button>
+        <input id="buscar" class="input-barcode" [(ngModel)]="searchQuery" (input)="buscarProductos()"
+            placeholder="Nombre o Código de barras" />
+        @if (productosEncontrados.length > 0) {
+        <ol>
+            @for (producto of productosEncontrados; track $index) {
+            <li>
+                {{ producto.nombreProducto }} ({{ producto.codigo }})
+                <button (click)="agregarProducto(producto)">Agregar</button>
+            </li>
+            }
+        </ol>
+        }
         <table class="product-list">
             <thead>
                 <tr>
@@ -13,14 +23,25 @@
                 </tr>
             </thead>
             <tbody class="product-items">
- 
+
+                @for (producto of productosSeleccionados; track $index) {
+                <tr>
+                    <td>{{ producto.codigo }}</td>
+                    <td>{{ producto.nombreProducto }}</td>
+                    <td>{{ producto.precio }}</td>
+                    <td>{{producto.cantidad}}</td>
+                    <td>{{ producto.precio * producto.cantidad }}</td>
+                    <td><button (click)="eliminarProductoLista($index, producto)">quitar</button></td>
+                </tr>
+                }
+
             </tbody>
         </table>
     </div>
     <div class="right-panel">
         <div class="summary">
             <h3>Resumen de la venta</h3>
-            <p>Subtotal: <span class="subtotal">$0.00</span></p>
+            <p>Subtotal: <span class="subtotal">${{subtotal}}</span></p>
             <p>Impuestos (10%): <span class="tax">$0.00</span></p>
             <h2>Total: <span class="total">$0.00</span></h2>
         </div>
