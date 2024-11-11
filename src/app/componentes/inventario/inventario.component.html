@@ -3,14 +3,13 @@
         <h1>Gestión de Inventario</h1>
         <form [formGroup]="form" (ngSubmit)="agregarProducto()">
             <div class="product-form">
-                <input type="text" id="barcode" formControlName="codigoBarras" placeholder="Código de Barras">
                 <input type="text" id="product-name" formControlName="nombreProducto" placeholder="Nombre del Producto">
                 <input type="number" id="price" formControlName="precio" placeholder="Precio" step="0.01">
                 <input type="number" id="quantity" formControlName="cantidad" placeholder="Cantidad" min="1">
                 @if (!editado) {
-                    <button type="submit">Agregar Producto</button>
+                <button type="submit">Agregar Producto</button>
                 } @else {
-                    <button type="submit">Editar Producto</button>
+                <button type="submit">Editar Producto</button>
                 }
             </div>
         </form>
@@ -27,7 +26,8 @@
                 </tr>
                 @for (item of inventario; track $index) {
                 <tr>
-                    <td></td>
+
+                    <td>{{item.codigo}}</td>
                     <td>{{item.nombreProducto}}</td>
                     <td>{{item.precio}}</td>
                     <td>{{item.cantidadDisponible}}</td>
@@ -36,7 +36,7 @@
                     </td>
                 </tr>
                 } @if (inventario == null) {
-                    <h3>NO HAY DATOS</h3>
+                <h3>NO HAY DATOS</h3>
                 }
             </thead>
         </table>
