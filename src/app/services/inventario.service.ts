@@ -24,4 +24,7 @@ export class InventarioService {
   eliminarInventario(inventario:any):Observable<any>{
     return this.http.delete(`${this.URL}/${inventario}`)
   }
+  buscarPorCodigoBarras(nombre: string, codigo: string): Observable<any>{
+    return this.http.get(`${this.URL}/buscar?nombre=${nombre}&codigo=${codigo}`);
+  }
 }
