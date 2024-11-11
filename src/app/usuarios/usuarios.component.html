@@ -1,0 +1,49 @@
+<div>
+    <div class="usuario-container">
+        <h1>Usuarios</h1>
+        <form [formGroup]="form" (ngSubmit)="agregarUsuario()">
+            <div class="product-form">
+                <input type="text" formControlName="nombre" placeholder="Agregar">
+                <input type="text" formControlName="contrasena" placeholder="Contrasena">
+                <input type="text" formControlName="rol" placeholder="Rol">
+              
+            @if (!editado) {
+                <button type="submit">Agregar Usuario</button>
+            } @else {
+                <button type="submit">Editar Usuario</button>
+            } 
+            </div>
+        </form>
+        <table class="inventory-list">
+            <thead>
+                <tr>
+                    <th>Empleado</th>
+                    <th>Rol</th>
+                    <th>Estado</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+              <!---->  @for (item of usuarios; track $index){
+                    <tr>
+                    <td>{{ item.nombre }}</td>
+                    <td>{{ item.rol.descripcion }}</td>
+                    <td>
+                        <span [class.activo]="item.activo" [class.inactivo]="!item.activo">
+                            {{ item.activo ? 'Activo' : 'Inactivo' }}
+                        </span>
+                    </td>
+                    <td>
+                        <button class="buttonusu" (click)="editarUsuario(item)">Editar Usuario</button>
+                        <button class="buttonusu" (click)="activarDesactivarU(item.idUsuario, !item.activo)">
+                            {{ item.activo ? 'Desactivar' : 'Activar' }}
+                        </button>
+                    </td>
+                </tr>
+            }@if (usuarios == null){
+                <h3>No ususarios</h3>
+            }
+            </tbody>
+        </table>
+    </div>
+</div>
