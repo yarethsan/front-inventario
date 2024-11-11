@@ -6,6 +6,7 @@ import { InventarioComponent } from './componentes/inventario/inventario.compone
 import { Component } from '@angular/core';
 import { UsuarioComponent } from './componentes/usuarios/usuarios.component';
 
+
 export const routes: Routes = [
   { path: "" , component: DashboardComponent,
     children:[
