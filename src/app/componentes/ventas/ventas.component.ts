@@ -3,6 +3,7 @@ import { VentasService } from '../../services/ventas.service';
 import { FormsModule } from '@angular/forms';
 import { InventarioService } from '../../services/inventario.service';
 import { debounceTime, Subject, switchMap } from 'rxjs';
+import { DetalleventaService } from '../../services/detalleventa.service';
 
 @Component({
   selector: 'app-ventas',
@@ -22,7 +23,7 @@ export class VentasComponent {
   private searchSubject: Subject<string> = new Subject();  // Subject para manejar las búsquedas
 
 
-  constructor(private ventasService: VentasService, private inventarioService: InventarioService) { }
+  constructor(private ventasService: VentasService, private inventarioService: InventarioService, private detalleVenta:DetalleventaService) { }
   ngOnInit() {
     // Suscribirse al Subject para emitir búsquedas cuando cambie el valor
     this.searchSubject.pipe(
@@ -44,12 +45,15 @@ export class VentasComponent {
     const venta = {
       idVenta: null,
       fecha: new Date(),
-      total: null,
-      idUsuario: { idUsuario: parseInt("", 10) }
+      total: this.total,
+      idUsuario: { idUsuario: 11 }
     }
+    console.log(this.productosSeleccionados)
+    let id:number;
     this.ventasService.agregarVenta(venta).subscribe({
-      next: respuesta => console.log(),
-      error: error => console.log()
+      next: respuesta => id = respuesta.idVenta,
+      error: error => console.log(),
+      complete: () => this.agregarDetalle(id,this.productosSeleccionados)
     })
   }
 
@@ -90,6 +94,23 @@ export class VentasComponent {
     }
   }
 
-
+  agregarDetalle(idVenta:number, listaProductos:any){
+    let nuevaLista:any[] = [];
+      for(let producto of listaProductos){
+        const id = producto.idProducto
+        const p = {
+          idDetalle: null,
+          venta: { idVenta: idVenta },
+          inventario: { idProducto: id },
+          cantidad: producto.cantidad,
+          subtotal: producto.cantidad * producto.precio
+        }        
+        nuevaLista.push(p);
+      }
+    this.detalleVenta.agregarDetalle(nuevaLista).subscribe({
+      next: (data) => {console.log(data)},
+      error: (error) => {console.error(error)}
+    })
+  }
 
 }
