@@ -5,10 +5,12 @@ import { VentasComponent } from './componentes/ventas/ventas.component';
 import { InventarioComponent } from './componentes/inventario/inventario.component';
 import { UsuarioComponent } from './usuarios/usuarios.component';
 import { Component } from '@angular/core';
+import { LoginComponent } from './componentes/login/login.component';
 
 export const routes: Routes = [
-  { path: "" , component: DashboardComponent,
+  { path: "dashboard" , component: DashboardComponent,
     children:[
+
       {path: "", redirectTo: "menu", pathMatch:"full"},
       {path: "menu", component: InicioComponent},
       {path: "ventas", component: VentasComponent},
@@ -16,5 +18,5 @@ export const routes: Routes = [
       {path: "usuarios", component: UsuarioComponent}
     ]
 
-  }
+  }, {path: "login", component:LoginComponent}
 ];
