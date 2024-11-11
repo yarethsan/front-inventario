@@ -19,7 +19,6 @@ editado:boolean=false
 idProducto!: number ;
   inventario: any;
   form: FormGroup = new FormGroup({
-    codigoBarras: new FormControl(''),
     nombreProducto: new FormControl(''),
     precio: new FormControl(''),
     cantidad: new FormControl('')
@@ -47,7 +46,7 @@ idProducto!: number ;
   agregarProducto() {
     const producto = {
       idProducto: null,
-      //codigoBarras: this.form.get('codigoBarras')?.value,
+      codigo: 'ID-' + Date.now(),
       nombreProducto: this.form.get('nombreProducto')?.value,
       precio: this.form.get('precio')?.value,
       cantidadDisponible: this.form.get('cantidad')?.value
@@ -68,7 +67,6 @@ idProducto!: number ;
         }
       })
       this.form.setValue({
-        codigoBarras: null,
         nombreProducto : null,
         precio: null,
         cantidad: null
@@ -84,7 +82,6 @@ idProducto!: number ;
     this.idProducto = producto.idProducto
     console.log(producto )
     this.form.setValue({
-      codigoBarras: null,
       nombreProducto : producto.nombreProducto,
       precio: producto.precio,
       cantidad: producto.cantidadDisponible
