@@ -1,0 +1,16 @@
+
+<div class="formulario">
+    <h1>Inicio de sesión</h1>
+    <form [formGroup]="form" (ngSubmit)="onLogin()" >
+        <div class="username">
+            <input type="text" formControlName="nombre" placeholder="Nombre" required>
+        </div>
+        <div class="username">
+            <input type="password" formControlName="contrasena" placeholder="Contraseña">
+        </div>
+        <button type="submit"> Iniciar sesión</button>
+        <div class="registrarse">
+            <a href="#">Registrarse</a>
+        </div>
+    </form>
+</div>
